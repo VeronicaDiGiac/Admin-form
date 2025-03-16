@@ -18,13 +18,15 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException();
     }
-
+    // se esiste allora loggalo
     return this.singIn(user);
   }
   async validateUser(input: AuthInput): Promise<SignInData | null> {
     const user = await this.userService.findUserByName(input.username);
+    // chiama findUserByName per vedere se esiste username passato nel db
 
     if (user && user.password === input.password) {
+      // se c'e' una corrispondenza restituisci questo oggetto
       return {
         userId: user.userId,
         username: user.username,
@@ -38,6 +40,8 @@ export class AuthService {
       sub: user.userId,
       username: user.username,
     };
+
+    // la libreria crea il token che corris
 
     const accessToken = await this.jwtService.signAsync(tokenPayload);
 

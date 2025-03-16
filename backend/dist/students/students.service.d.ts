@@ -1,7 +1,9 @@
-import { Student } from '../models/student.model';
+import { Student } from './interfaces/student.interface';
+import { RequestStudentDto } from './dto/students.dto';
 export declare class StudentsService {
     private readonly students;
-    addStudent(name: string, surname: string, email: string, className: string): Student;
+    private readonly studentId;
+    addStudent(RequestStudentDto: RequestStudentDto): Student;
     removeStudent(studentId: number): boolean;
     getAllStudents(): Student[];
 }

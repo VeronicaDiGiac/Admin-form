@@ -23,23 +23,22 @@ async function loadStudents() {
     const data = await response.json();
     const studentsTable = document
       .getElementById("studentsTable")
-      .querySelector("tbody");
+      .getElementsByTagName("tbody")[0];
     studentsTable.innerHTML = "";
 
     data.students.forEach((student) => {
       studentsTable.innerHTML += `
-        <tr>
-          <td>${student.name}</td>
-          <td>${student.surname}</td>
-          <td>${student.email}</td>
-          <td>${student.class}</td>
-          <td>
-            <button class=" px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" onclick="deleteStudent(${student.studentId})">
-         Rimuovi
+          <tr class="border-b border-gray-300 hover:bg-gray-100 transition">
+          <td class="px-4 py-2 text-gray-700">${student.name}</td>
+          <td class="px-4 py-2 text-gray-700">${student.surname}</td>
+          <td class="px-4 py-2 text-gray-700">${student.email}</td>
+          <td class="px-4 py-2 text-gray-700">${student.className}</td>
+          <td class="px-4 py-2 text-center">
+            <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" onclick="deleteStudent(${student.studentId})">
+              Remove
             </button>
           </td>
-        </tr>
-      `;
+        </tr>`;
     });
   } catch (error) {
     console.error("Error:", error);
@@ -84,7 +83,7 @@ async function addStudent(event) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ name, surname, email, class: className }),
+      body: JSON.stringify({ name, surname, email, className: className }),
     });
 
     if (!response.ok) {

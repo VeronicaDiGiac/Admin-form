@@ -16,31 +16,29 @@ let StudentsService = class StudentsService {
                 name: 'Mario',
                 surname: 'Rossi',
                 email: 'mario.rossi@example.com',
-                class: '3A',
+                className: '3A',
             },
             {
                 studentId: 2,
                 name: 'Luca',
                 surname: 'Bianchi',
                 email: 'luca.bianchi@example.com',
-                class: '2B',
+                className: '2B',
             },
             {
                 studentId: 3,
                 name: 'Paola',
                 surname: 'Neri',
                 email: 'paola.neri@example.com',
-                class: '4C',
+                className: '4C',
             },
         ];
+        this.studentId = 3;
     }
-    addStudent(name, surname, email, className) {
+    addStudent(RequestStudentDto) {
         const newStudent = {
-            studentId: this.students.length + 1,
-            name,
-            surname,
-            email,
-            class: className,
+            studentId: this.studentId + 1,
+            ...RequestStudentDto,
         };
         this.students.push(newStudent);
         return newStudent;

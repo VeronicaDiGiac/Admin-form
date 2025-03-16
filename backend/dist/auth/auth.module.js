@@ -12,7 +12,7 @@ const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
 const users_module_1 = require("../users/users.module");
 const jwt_1 = require("@nestjs/jwt");
-const jwt_secrets_1 = require("./configs/jwt-secrets");
+const jwt_secrets_1 = require("../configs/jwt-secrets");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;

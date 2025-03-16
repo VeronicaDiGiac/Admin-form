@@ -1,17 +1,13 @@
 import { StudentsService } from './students.service';
+import { RequestStudentDto } from './dto/students.dto';
 export declare class StudentsController {
     private readonly studentsService;
     constructor(studentsService: StudentsService);
-    addStudent(body: {
-        name: string;
-        surname: string;
-        email: string;
-        class: string;
-    }): import("../models/student.model").Student;
+    addStudent(RequestStudentDto: RequestStudentDto): Promise<import("./interfaces/student.interface").Student>;
     removeStudent(studentId: number): {
         message: string;
     };
     getStudents(): {
-        students: import("../models/student.model").Student[];
+        students: import("./interfaces/student.interface").Student[];
     };
 }

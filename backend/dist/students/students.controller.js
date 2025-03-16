@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StudentsController = void 0;
 const common_1 = require("@nestjs/common");
 const students_service_1 = require("./students.service");
+const students_dto_1 = require("./dto/students.dto");
 let StudentsController = class StudentsController {
     constructor(studentsService) {
         this.studentsService = studentsService;
     }
-    addStudent(body) {
-        return this.studentsService.addStudent(body.name, body.surname, body.email, body.class);
+    async addStudent(RequestStudentDto) {
+        return this.studentsService.addStudent(RequestStudentDto);
     }
     removeStudent(studentId) {
         try {
@@ -45,8 +46,8 @@ __decorate([
     (0, common_1.Post)('add'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [students_dto_1.RequestStudentDto]),
+    __metadata("design:returntype", Promise)
 ], StudentsController.prototype, "addStudent", null);
 __decorate([
     (0, common_1.Delete)('remove/:studentId'),

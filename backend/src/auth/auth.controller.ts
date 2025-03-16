@@ -5,7 +5,6 @@ import {
   Post,
   Get,
   Body,
-  UnauthorizedException,
   UseGuards,
   Request,
 } from '@nestjs/common';
@@ -18,12 +17,8 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async login(@Body() input: { username: string; password: string }) {
-    try {
-      return await this.authService.authenticate(input);
-    } catch (error) {
-      throw new UnauthorizedException('Invalid data');
-    }
+  login(@Body() input: { username: string; password: string }) {
+    return this.authService.authenticate(input);
   }
 
   // Uso delle guards che assicura la validita' del token

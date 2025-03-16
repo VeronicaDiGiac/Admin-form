@@ -10,41 +10,54 @@
     />
     <script src="js/index.js" defer></script>
   </head>
-  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-      <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
-      <form id="loginForm">
-        <div class="mb-4">
-          <label for="username" class="block text-sm font-medium text-gray-700">
-            Username:
-          </label>
+  <body
+    class="bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center min-h-screen"
+  >
+    <div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-md">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">
+        Welcome Back
+      </h2>
+      <p class="text-gray-500 text-center mb-6">
+        Sign in to access your account
+      </p>
+
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700"
+            >Username</label
+          >
           <input
             type="text"
             id="username"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
             required
           />
         </div>
-        <div class="mb-6">
-          <label for="password" class="block text-sm font-medium text-gray-700">
-            Password:
-          </label>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Password</label
+          >
           <input
             type="password"
             id="password"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
             required
           />
         </div>
+
         <button
           type="submit"
-          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-md"
         >
           Login
         </button>
       </form>
 
-      <div id="result" class="mt-4 text-center text-sm text-gray-600"></div>
+      <div
+        id="result"
+        class="mt-4 text-center text-sm text-red-500 font-medium"
+      ></div>
     </div>
   </body>
 </html>

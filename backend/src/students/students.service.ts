@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Student } from '../models/student.model';
+import { Student } from './interfaces/student.interface';
+import { RequestStudentDto } from './dto/students.dto';
 
 @Injectable()
 export class StudentsService {
@@ -9,36 +10,31 @@ export class StudentsService {
       name: 'Mario',
       surname: 'Rossi',
       email: 'mario.rossi@example.com',
-      class: '3A',
+      className: '3A',
     },
     {
       studentId: 2,
       name: 'Luca',
       surname: 'Bianchi',
       email: 'luca.bianchi@example.com',
-      class: '2B',
+      className: '2B',
     },
     {
       studentId: 3,
       name: 'Paola',
       surname: 'Neri',
       email: 'paola.neri@example.com',
-      class: '4C',
+      className: '4C',
     },
   ];
 
-  addStudent(
-    name: string,
-    surname: string,
-    email: string,
-    className: string,
-  ): Student {
-    const newStudent: Student = {
-      studentId: this.students.length + 1,
-      name,
-      surname,
-      email,
-      class: className,
+  // in assenza di DB ho creato una varibile per simulare l'autoincrement.
+  private readonly studentId = 3;
+
+  addStudent(RequestStudentDto: RequestStudentDto): Student {
+    const newStudent = {
+      studentId: this.studentId + 1,
+      ...RequestStudentDto,
     };
     this.students.push(newStudent);
     return newStudent;

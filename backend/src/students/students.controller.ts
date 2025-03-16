@@ -1,26 +1,14 @@
 import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
 import { StudentsService } from './students.service';
+import { RequestStudentDto } from './dto/students.dto';
 
 @Controller('students')
 export class StudentsController {
   constructor(private readonly studentsService: StudentsService) {}
 
   @Post('add')
-  addStudent(
-    @Body()
-    body: {
-      name: string;
-      surname: string;
-      email: string;
-      class: string;
-    },
-  ) {
-    return this.studentsService.addStudent(
-      body.name,
-      body.surname,
-      body.email,
-      body.class,
-    );
+  async addStudent(@Body() RequestStudentDto: RequestStudentDto) {
+    return this.studentsService.addStudent(RequestStudentDto);
   }
 
   @Delete('remove/:studentId')

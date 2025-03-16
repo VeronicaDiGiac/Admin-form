@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/Models/user.model';
+import { User } from 'src/users/interfaces/user.interface';
 
 // simulazione DB
 const users: User[] = [

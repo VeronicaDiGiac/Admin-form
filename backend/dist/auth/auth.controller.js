@@ -20,13 +20,8 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async login(input) {
-        try {
-            return await this.authService.authenticate(input);
-        }
-        catch (error) {
-            throw new common_1.UnauthorizedException('Invalid data');
-        }
+    login(input) {
+        return this.authService.authenticate(input);
     }
     getUserInfo(request) {
         return request.user;
@@ -39,7 +34,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], AuthController.prototype, "login", null);
 __decorate([
     (0, common_1.UseGuards)(auth_guards_1.AuthGuard),
